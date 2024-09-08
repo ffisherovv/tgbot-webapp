@@ -1,3 +1,4 @@
+import json
 from aiogram import F, Router
 from aiogram.filters import CommandStart, Command  # Исправлен импорт ContentTypes
 from aiogram.types import Message,ContentType
@@ -7,8 +8,10 @@ router = Router()
 
 @router.message(CommandStart())
 async def start(message: Message):
+    
     await message.answer("Hello! Visit our website.", reply_markup=kb.markup)
 
 @router.message(F.content_type == ContentType.WEB_APP_DATA)  # Используем ContentTypes
 async def webapp(message: Message):
-    await message.answer(message.web_app_data.data)
+    res = json.loads()
+    await message.answer(f'name:{res["name"]}\n email:{res["email"]}\n phone:{res["phone"]}')
