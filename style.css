@@ -27,3 +27,7 @@ body {
 .button:hover {
   background: var(--tg-theme-secondary-bg-color);
 }
+
+img {
+  width: 200px;
+}
