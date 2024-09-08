@@ -11,7 +11,7 @@
       <h1>Онлайн магазин</h1>
       <img src="./img/istockphoto-496546118-612x612.jpg" alt="pizza" />
       <p></p>
-      <button class="button">Купить</button>
+      <button id="button">Купить</button>
     </div>
 
     <form id="form">
@@ -19,12 +19,14 @@
       <input type="text" placeholder="Email" id="user_email" />
       <input type="text" placeholder="Phone number" id="user_phone" />
       <button id="order">Оформить</button>
+      <div id="error"></div>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
       let tg = window.Telegram.WebApp;
-      let buy = document.getElementsByClassName("button");
+      let buy = document.getElementById("button");
       let order = document.getElementById("order");
+      tg.expand();
 
       buy.addEventListener("click", () => {
         document.getElementById("main").style.display = "none";
@@ -36,6 +38,30 @@
       });
 
       order.addEventListener("click", () => {
+        let name = document.getElementById("user_name").value;
+        let email = document.getElementById("user_email").value;
+        let phone = document.getElementById("user_phone").value;
+        if (name.length < 5) {
+          document.getElementById("error").innerText = "Ошибка в имени";
+          return;
+        }
+        if (email.length < 5) {
+          document.getElementById("error").innerText = "Ошибка в email";
+          return;
+        }
+
+        if (phone.length < 5) {
+          document.getElementById("error").innerHTML = "Ошибка в номере";
+          return;
+        }
+
+        let data = {
+          name: name,
+          email: email,
+          phone: phone,
+        };
+
+        tg.sendData(JSON.stringify(data));
         tg.close();
       });
     </script>
