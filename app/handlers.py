@@ -13,5 +13,5 @@ async def start(message: Message):
 
 @router.message(F.content_type == ContentType.WEB_APP_DATA)  # Используем ContentTypes
 async def webapp(message: Message):
-    res = json.loads()
+    res = json.loads(message.web_app_data.data)
     await message.answer(f'name:{res["name"]}\n email:{res["email"]}\n phone:{res["phone"]}')
