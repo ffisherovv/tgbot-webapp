@@ -20,7 +20,8 @@ body {
 }
 
 .button {
-  color: var(--tg-theme-button-color);
+  /* color: var(--tg-theme-button-color); */
+  color: brown;
   background-color: var(--tg-theme-button-text-color);
 }
 
@@ -29,7 +30,7 @@ body {
 }
 
 img {
-  width: 200px;
+  width: 100px;
 }
 
 #form {
