@@ -19,11 +19,11 @@ body {
   background-color: var(--tg-theme-bg-color);
 }
 
-button {
+.button {
   color: var(--tg-theme-button-color);
   background-color: var(--tg-theme-button-text-color);
 }
 
-button:hover {
+.button:hover {
   background: var(--tg-theme-secondary-bg-color);
 }
